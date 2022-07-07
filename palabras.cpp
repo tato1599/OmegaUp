@@ -1,26 +1,32 @@
 #include <iostream>
 #include <map>
-
+#include <vector>
+#include <algorithm>
+#include <stdio.h>
 using namespace std;
-
-int main(){
-    map<string,int> mapa;
-    map<int,string> mapa2;
-    int cp,pc;
+int cmp(pair<string,int> a, pair<string,int> b){
+    return a.second>b.second;
+}
+int main()
+{
+    map<string, int> mapa;
+    int cp, pc;
     string palabra;
-    cin>>cp>>pc;
-    for (int i = 0; i < cp ; i++)
+    cin >> cp >> pc;
+    for (int i = 0; i < cp; i++)
     {
-        cin>>palabra;
+        cin >> palabra;
         mapa[palabra]++;
     }
 
-    for(auto x: mapa){
-       mapa2[x.second] = x.first;
-    }
-    for(auto x=(mapa2.end()); x!=(mapa2.begin());--x){
-         cout<< x->first << " " << x->second << endl;
-    }
+    vector <pair<string,int> > v(mapa.begin(), mapa.end() );
 
+    sort( v.begin() , v.end(), cmp );
+    for (int i = 0; i<v.size(); i++)
+    {
+        cout<< v[i].first<<" " << v[i].second<<endl;
+    }
     
+ 
+ return 0;
 }

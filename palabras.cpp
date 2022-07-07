@@ -22,7 +22,7 @@ int main()
     vector <pair<string,int> > v(mapa.begin(), mapa.end() );
 
     sort( v.begin() , v.end(), cmp );
-    for (int i = 0; i<v.size(); i++)
+    for (int i = 0; i<pc; i++)
     {
         cout<< v[i].first<<" " << v[i].second<<endl;
     }
